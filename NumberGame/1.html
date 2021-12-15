@@ -1,0 +1,49 @@
+this is page 1
+
+<p id="scholz">scholz</p>
+<input id="i1" />
+<!-- <input id="i2" value="7"/> -->
+<button onclick="doGuess()">guess the number!</button>
+
+<a href="index.html">go back to index</a>
+
+<script>
+  let v1;
+  let v2;
+  let result;
+
+  let maxAttempts = 3;
+  let numAttempts = 0;
+
+  let randomFloat = Math.random();
+  console.log(randomFloat);
+  let randomInteger = parseInt(randomFloat * 10);
+  // let randomInteger = parseInt(randomFloat * 1000);
+
+  console.log(randomInteger);
+
+  function doGuess() {
+    v1 = document.getElementById("i1").value;
+    v1 = parseInt(v1);
+
+
+    if (numAttempts < maxAttempts) {
+      if (v1 < randomInteger) {
+        result = "too low!";
+      }
+      if (v1 > randomInteger) {
+        result = "too high, stupid!";
+      }
+      if (v1 == randomInteger) {
+        result = "dang, you beat me.";
+      }
+    } else {
+      result = "you lost, you real loser!"
+    }
+    document.getElementById("scholz").innerText = result;
+    numAttempts = numAttempts + 1;
+  }
+
+
+
+</script>

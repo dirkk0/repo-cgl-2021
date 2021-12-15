@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <style>
+      h1 {
+        color: yellow;
+        background-color: black;
+      }
+
+      p {
+        background-color: lightgrey;
+      }
+
+      .dirk {
+        background-color: red;
+      }
+
+      /* #scholz {
+        background-color: green;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1>This is the title</h1>
+    <!-- <p>This is a markup document.</p> -->
+    <!-- <p class="dirk">bla.</p> -->
+    <!-- <p class="dirk">blup.</p> -->
+    <p id="scholz">scholz</p>
+    <input id="i1" value="5"/>
+    <input id="i2" value="7"/>
+    <button onclick="doSomething()">do something</button>
+
+    <p>
+      <a href="1.html">go to page 1</a>
+    </p>
+    <p>
+      <a href="2.html">go to page 2</a>
+    </p>
+  </body>
+  <script>
+    let v1
+    let v2
+    let result
+
+    function doSomething () {
+      v1 = document.getElementById("i1").value;
+      v2 = document.getElementById("i2").value;
+      v1 = parseInt(v1)
+      v2 = parseInt(v2)
+      result = v1 + v2
+      console.log(v1, v2);
+      console.log(result);
+      // console.log(numClicks = numClicks + 12)
+    }
+    let numClicks = 0;
+
+    let a = 1;
+    let b = 2;
+    let c = a + b;
+
+    console.log(c);
+
+    // document.getElementById("scholz").innerText = "The result is " + c;
+    // document.write(c)
+  </script>
+</html>

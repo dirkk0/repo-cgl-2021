@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <style>
+        h1 {
+            color: yellowgreen;
+            background-color: black;
+        }
+
+        p {
+            background-color: lightgray;
+        }
+
+        .nahnah {
+            background-color: aqua;
+        }
+
+        /* #scholz {
+            background-color: blue;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <h1>This is the title.</h1>
+    <p>This a markup document.</p>
+    <p class="nahnah">bluh</p>
+    <p class="nahnah">bluhh</p> -->
+    <p id="scholz">bluh bluhh</p>
+    <input id="i1" value="5" />
+    <input id="i2" value="7" />
+    <!--<button oneclick="console.log(999)">Do something</button>-->
+    <!--<button oneclick="console.log(numClicks = + 1)">Do something</button>-->
+    <button onclick="doSomething()">Do something</button>"
+    <p><a href="1.html">Go to page 1</a></p>
+    <p><a href="2.html">Go to page 2</a></p>
+</body>
+<script>
+
+    function doSomething() {
+        v1 = document.getElementById("i1").value;
+        v2 = document.getElementById("i2").value;
+        v1 = parseInt(v1)
+        v2 = parseInt(v2)
+
+        result = v1 + v2
+        console.log(v1, v2);
+        console.log(result);
+        //console.log(numClicks= numClicks +12)
+    }
+
+    let numClicks = 0;
+
+    //let v1 = document.getElementById("i1").value;
+    //let v2 = document.getElementById("i2").value;
+
+    //console.log(v1, v2)
+
+    let a = 1;
+    let b = 2;
+    let c = a + b;
+    console.log(c)
+
+    //document.getElementById("scholz").innerText = "The result is" + c;
+    //document.write(c)
+</script>
+
+</html>
