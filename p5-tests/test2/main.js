@@ -1,22 +1,42 @@
+let dx;
+let dy;
+
+let vx = 1.5;
+let vy = 1.5;
+
+let canvasWidth = 400
+let canvasHeight = 300
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(canvasWidth, canvasHeight);
+  dx = canvasWidth / 2;
+  dy = canvasHeight / 2;
+
+
+}
+
+function mousePressed () {
+  vy = -vy
 }
 
 function draw() {
-  // background(220)
-  // if (mouseIsPressed) {
-  //   fill(0);
-  // } else {
-  //   fill(255);
-  // }
-  // ellipse(mouseX, mouseY, 80, 80);
+  background(120);
+  // dx *= 1.02
 
-  let dx = Math.random() * 200;
-  let dy = Math.random() * 300;
-  for (let i = 0; i < 10; i++) {
-    ellipse(50 + dx, 50 + dy, 80, 80);
+  if (dx > canvasWidth) {
+    vx = - vx
   }
-  // ellipse(50, 50, 80, 80);
-  // ellipse(80, 80, 80, 80);
-  // ellipse(120, 120, 80, 80);
+  if (dx < 0) {
+    vx = - vx
+  }
+  if (dy > canvasHeight) {
+    vy = - vy
+  }
+  if (dy < 0) {
+    vy = - vy
+  }
+
+  dx += vx
+  dy += vy
+  ellipse(dx, dy, 20, 20);
 }
