@@ -18,9 +18,35 @@ let canvasHeight = 300;
 
 // create an instance mode object for p5js
 let sketch = function (p5) {
-  p5.mousePressed = function () {
-    vy = -vy;
-  };
+  // p5.mousePressed = function () {
+  //   vy = -vy;
+  // };
+
+  // =========
+  function Thing() {
+    // object, but dont tell anyone
+    this.dx = 100;
+    this.dy = 100;
+    this.dw = 15;
+
+    this.vx = Math.random() * 2 - 1;
+    this.vy = Math.random() * 2 - 1;
+
+    this.draw = function () {
+      // console.log(123)
+      this.dx += this.vx;
+      this.dy += this.vy;
+      p5.circle(this.dx, this.dy, this.dw * 2);
+    };
+  }
+
+  let things = []
+
+  thing1 = new Thing();
+  thing2 = new Thing();
+  thing3 = new Thing();
+
+  // =========
 
   p5.setup = function () {
     // frameRate(5);
@@ -33,26 +59,33 @@ let sketch = function (p5) {
   p5.draw = function () {
     p5.background(120);
 
-    if (dx > canvasWidth) {
-      // vx = -vx;
-      dx = 0;
-    }
-    if (dx < 0) {
-      // vx = -vx;
-      dx = canvasWidth;
-    }
-    if (dy > canvasHeight) {
-      // vy = -vy;
-      dy = 0;
-    }
-    if (dy < 0) {
-      // vy = -vy;
-      dy = canvasHeight;
-    }
+    thing1.draw();
+    thing2.draw();
+    thing3.draw();
 
-    dx += vx;
-    dy += vy;
-    p5.ellipse(dx, dy, dw * 2, dw * 2);
+
+    // if (dx > canvasWidth) {
+    //   // vx = -vx;
+    //   dx = 0;
+    // }
+    // if (dx < 0) {
+    //   // vx = -vx;
+    //   dx = canvasWidth;
+    // }
+    // if (dy > canvasHeight) {
+    //   // vy = -vy;
+    //   dy = 0;
+    // }
+    // if (dy < 0) {
+    //   // vy = -vy;
+    //   dy = canvasHeight;
+    // }
+
+    // dx += vx;
+    // dy += vy;
+    // p5.ellipse(dx, dy, dw * 2, dw * 2);
+    // p5.circle(dx, dy, dw * 2);
+    // p5.rect(dx, dy, 25, 25, 2);
   };
 };
 
