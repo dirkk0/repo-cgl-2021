@@ -40,11 +40,16 @@ let sketch = function (p5) {
     };
   }
 
+  const NUM_THINGS = 5
   let things = []
 
-  thing1 = new Thing();
-  thing2 = new Thing();
-  thing3 = new Thing();
+  for (let i = 0; i <= NUM_THINGS; i++) {
+    things[i] = new Thing()
+  }
+
+  // thing1 = new Thing();
+  // thing2 = new Thing();
+  // thing3 = new Thing();
 
   // =========
 
@@ -59,9 +64,13 @@ let sketch = function (p5) {
   p5.draw = function () {
     p5.background(120);
 
-    thing1.draw();
-    thing2.draw();
-    thing3.draw();
+    for (let i = 0; i <= NUM_THINGS; i++) {
+      things[i].draw()
+    }
+
+    // thing1.draw();
+    // thing2.draw();
+    // thing3.draw();
 
 
     // if (dx > canvasWidth) {
