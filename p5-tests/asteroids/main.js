@@ -28,6 +28,11 @@ let sketch = function (p5) {
     this.dx = 100;
     this.dy = 100;
     this.dw = 15;
+    this.col = p5.color(
+      Math.random() * 255,
+      Math.random() * 255,
+      Math.random() * 255
+    );
 
     this.vx = Math.random() * 2 - 1;
     this.vy = Math.random() * 2 - 1;
@@ -36,15 +41,17 @@ let sketch = function (p5) {
       // console.log(123)
       this.dx += this.vx;
       this.dy += this.vy;
+
+      p5.stroke(this.col)
       p5.circle(this.dx, this.dy, this.dw * 2);
     };
   }
 
-  const NUM_THINGS = 5
-  let things = []
+  const NUM_THINGS = 500;
+  let things = [];
 
   for (let i = 0; i <= NUM_THINGS; i++) {
-    things[i] = new Thing()
+    things[i] = new Thing();
   }
 
   // thing1 = new Thing();
@@ -62,16 +69,15 @@ let sketch = function (p5) {
   };
 
   p5.draw = function () {
-    p5.background(120);
+    // p5.background(120);
 
     for (let i = 0; i <= NUM_THINGS; i++) {
-      things[i].draw()
+      things[i].draw();
     }
 
     // thing1.draw();
     // thing2.draw();
     // thing3.draw();
-
 
     // if (dx > canvasWidth) {
     //   // vx = -vx;
