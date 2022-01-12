@@ -43,11 +43,12 @@ let sketch = function (p5) {
       this.dy += this.vy;
 
       p5.stroke(this.col)
+      p5.fill(this.col)
       p5.circle(this.dx, this.dy, this.dw * 2);
     };
   }
 
-  const NUM_THINGS = 500;
+  const NUM_THINGS = 100;
   let things = [];
 
   for (let i = 0; i <= NUM_THINGS; i++) {
