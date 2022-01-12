@@ -1,3 +1,7 @@
+
+
+// global mode usage of p5.js
+
 let dx;
 let dy;
 

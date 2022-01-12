@@ -1,3 +1,6 @@
+
+// instance mode usage of p5.js
+
 let x = 100;
 let y = 100;
 let dx;
@@ -17,7 +20,6 @@ let sketch = function (p5) {
   p5.mousePressed = function() {
     vy = -vy;
   }
-  
 
   p5.setup = function () {
     // frameRate(5);
@@ -49,7 +51,7 @@ let sketch = function (p5) {
   };
 };
 
-// create instance mode
+// switch global mode to instance mode
 // https://p5js.org/examples/instance-mode-instantiation.html
 
 let myp5 = new p5(sketch);
