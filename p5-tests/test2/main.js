@@ -4,7 +4,7 @@ let dy;
 let vx = 1.5;
 let vy = 1.5;
 
-let canvasWidth = 300;
+let canvasWidth = 250;
 let canvasHeight = 300;
 
 let dw = 15;
