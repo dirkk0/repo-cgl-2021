@@ -25,9 +25,9 @@ let sketch = function (p5) {
   // =========
   function Thing() {
     // object, but dont tell anyone
-    this.dx = 100;
-    this.dy = 100;
-    this.dw = 15;
+    this.dx = Math.random() * canvasWidth;
+    this.dy = Math.random() * canvasHeight;
+    this.dw = Math.random() * 10;
     this.col = p5.color(
       Math.random() * 255,
       Math.random() * 255,
@@ -38,12 +38,16 @@ let sketch = function (p5) {
     this.vy = Math.random() * 2 - 1;
 
     this.draw = function () {
-      // console.log(123)
+      if (this.dx > canvasWidth) this.dx = 0;
+      if (this.dx < 0) this.dx = canvasWidth;
+      if (this.dy > canvasHeight) this.dy = 0;
+      if (this.dy < 0) this.dy = canvasHeight;
+
       this.dx += this.vx;
       this.dy += this.vy;
 
-      p5.stroke(this.col)
-      p5.fill(this.col)
+      p5.stroke(this.col);
+      p5.fill(this.col);
       p5.circle(this.dx, this.dy, this.dw * 2);
     };
   }
@@ -70,38 +74,10 @@ let sketch = function (p5) {
   };
 
   p5.draw = function () {
-    // p5.background(120);
-
+    p5.background(120);
     for (let i = 0; i <= NUM_THINGS; i++) {
       things[i].draw();
     }
-
-    // thing1.draw();
-    // thing2.draw();
-    // thing3.draw();
-
-    // if (dx > canvasWidth) {
-    //   // vx = -vx;
-    //   dx = 0;
-    // }
-    // if (dx < 0) {
-    //   // vx = -vx;
-    //   dx = canvasWidth;
-    // }
-    // if (dy > canvasHeight) {
-    //   // vy = -vy;
-    //   dy = 0;
-    // }
-    // if (dy < 0) {
-    //   // vy = -vy;
-    //   dy = canvasHeight;
-    // }
-
-    // dx += vx;
-    // dy += vy;
-    // p5.ellipse(dx, dy, dw * 2, dw * 2);
-    // p5.circle(dx, dy, dw * 2);
-    // p5.rect(dx, dy, 25, 25, 2);
   };
 };
 
