@@ -5,11 +5,6 @@ let y = 100;
 let dx;
 let dy;
 
-// let vx = -1.5;
-// let vy = -1.2;
-
-let vx = Math.random() * 2 - 1;
-let vy = Math.random() * 2 - 1;
 
 let dw = 15;
 
@@ -18,11 +13,11 @@ let canvasHeight = 300;
 
 // create an instance mode object for p5js
 let sketch = function (p5) {
-  // p5.mousePressed = function () {
-  //   vy = -vy;
-  // };
+  p5.mousePressed = function () {
+    ship.vy += 0.1;
+  };
 
-  // =========
+  // =====Thing start====
   function Thing() {
     // object, but dont tell anyone
     this.dx = Math.random() * canvasWidth;
@@ -52,32 +47,62 @@ let sketch = function (p5) {
     };
   }
 
-  const NUM_THINGS = 100;
+  const NUM_THINGS = 10;
   let things = [];
 
   for (let i = 0; i <= NUM_THINGS; i++) {
     things[i] = new Thing();
   }
+  // ====Thing end=====
 
-  // thing1 = new Thing();
-  // thing2 = new Thing();
-  // thing3 = new Thing();
 
-  // =========
+  // ====Ship start=====
+  function Ship() {
+    this.dx = canvasWidth / 2;
+    this.dy = canvasHeight / 2;
+    this.dw = 15;
+    this.col = p5.color(10, 0, 0);
+
+    this.vx = 0;
+    this.vy = 0;
+
+    this.draw = function () {
+      // ship logic
+      if (this.dx > canvasWidth) this.dx = 0;
+      if (this.dx < 0) this.dx = canvasWidth;
+      if (this.dy > canvasHeight) this.dy = 0;
+      if (this.dy < 0) this.dy = canvasHeight;
+
+      // ship movement
+      this.dx += this.vx;
+      this.dy += this.vy;
+
+      // ship rendering
+      p5.stroke(this.col);
+      p5.fill(this.col);
+      p5.rect(this.dx, this.dy, this.dw, this.dw * 2);
+    };
+  }
+
+  let ship = new Ship()
+  // ====Ship end=====
+
 
   p5.setup = function () {
     // frameRate(5);
     p5.createCanvas(canvasWidth, canvasHeight);
     dx = canvasWidth / 2;
     dy = canvasHeight / 2;
-    // p.createCanvas(700, 410);
   };
 
   p5.draw = function () {
     p5.background(120);
+    // draw all asteroids
     for (let i = 0; i <= NUM_THINGS; i++) {
       things[i].draw();
     }
+    // draw one ship
+    ship.draw()
   };
 };
 
