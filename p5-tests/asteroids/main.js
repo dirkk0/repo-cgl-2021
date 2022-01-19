@@ -68,8 +68,10 @@ let sketch = function (p5) {
     this.dw = 15;
     this.col = p5.color(10, 0, 0);
 
-    this.vx = 0;
-    this.vy = 0;
+    // this.vx = 0;
+    // this.vy = 0;
+
+    this.vel = 0;
 
     this.deg = 0;
 
@@ -83,14 +85,17 @@ let sketch = function (p5) {
       if (this.dy < 0) this.dy = canvasHeight;
 
       // ship movement
-      this.dx += this.vx;
-      this.dy += this.vy;
+      // this.dx += this.vx;
+      // this.dy += this.vy;
+
+      this.dx += this.vel * Math.sin(this.deg)
+      this.dy += this.vel * Math.cos(this.deg)
 
       // ship rendering
 
       // p5.push(this.dx, this.dy);
       p5.translate(this.dx, this.dy);
-      p5.rotate(this.deg);
+      p5.rotate(-this.deg);
 
       p5.stroke(this.col);
       p5.fill(this.col);
@@ -126,10 +131,10 @@ let sketch = function (p5) {
     }
 
     if (p5.keyIsDown(p5.UP_ARROW)) {
-      ship.vy += 0.1;
+      ship.vel += 0.1;
     }
 
-    if (ship.vy > MAX_SHIP_VELOCITY) ship.vy = MAX_SHIP_VELOCITY
+    if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY
 
 
     // draw one ship
