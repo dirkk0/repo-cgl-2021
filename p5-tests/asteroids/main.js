@@ -5,7 +5,6 @@ let y = 100;
 let dx;
 let dy;
 
-
 // let dw = 15;
 
 let canvasWidth = 300;
@@ -13,9 +12,9 @@ let canvasHeight = 300;
 
 // create an instance mode object for p5js
 let sketch = function (p5) {
-  p5.mousePressed = function () {
-    ship.vy += 0.1;
-  };
+  // p5.mousePressed = function () {
+  //   ship.vy += 0.1;
+  // };
 
   // =====Thing start====
   function Thing() {
@@ -55,9 +54,10 @@ let sketch = function (p5) {
   }
   // ====Thing end=====
 
-
-  // ====Ship start=====
+  // ====Ship start==================
   function Ship() {
+    this.x = 100;
+    this.y = 100;
     this.dx = canvasWidth / 2;
     this.dy = canvasHeight / 2;
     this.dw = 15;
@@ -66,7 +66,11 @@ let sketch = function (p5) {
     this.vx = 0;
     this.vy = 0;
 
+    this.deg = 0;
+
     this.draw = function () {
+      // keyboard logic
+
       // ship logic
       if (this.dx > canvasWidth) this.dx = 0;
       if (this.dx < 0) this.dx = canvasWidth;
@@ -78,15 +82,20 @@ let sketch = function (p5) {
       this.dy += this.vy;
 
       // ship rendering
+
+      // p5.push(this.dx, this.dy);
+      p5.translate(this.x, this.y);
+      p5.rotate(this.deg);
+
       p5.stroke(this.col);
       p5.fill(this.col);
-      p5.rect(this.dx, this.dy, this.dw, this.dw * 2);
+      p5.rect(-this.dw/2, -this.dw/2, this.dw, this.dw * 2);
+      // p5.pop();
     };
   }
 
-  let ship = new Ship()
+  let ship = new Ship();
   // ====Ship end=====
-
 
   p5.setup = function () {
     // frameRate(5);
@@ -102,8 +111,13 @@ let sketch = function (p5) {
     for (let i = 0; i <= NUM_ASTEROIDS; i++) {
       asteroids[i].draw();
     }
+
+    if (p5.keyIsDown(p5.LEFT_ARROW)) {
+      ship.deg += 0.05;
+    }
+
     // draw one ship
-    ship.draw()
+    ship.draw();
   };
 };
 
