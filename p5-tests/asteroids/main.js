@@ -89,7 +89,7 @@ let sketch = function (p5) {
 
       p5.stroke(this.col);
       p5.fill(this.col);
-      p5.rect(-this.dw/2, -this.dw/2, this.dw, this.dw * 2);
+      p5.rect(-this.dw/2, -this.dw, this.dw, this.dw * 2);
       // p5.pop();
     };
   }
@@ -114,6 +114,10 @@ let sketch = function (p5) {
 
     if (p5.keyIsDown(p5.LEFT_ARROW)) {
       ship.deg += 0.05;
+    }
+
+    if (p5.keyIsDown(p5.RIGHT_ARROW)) {
+      ship.deg -= 0.05;
     }
 
     // draw one ship
