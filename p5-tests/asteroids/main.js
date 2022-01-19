@@ -10,11 +10,21 @@ let dy;
 let canvasWidth = 300;
 let canvasHeight = 300;
 
+function randomSeedParkMiller (seed = 111) { // doesn't repeat b4 JS dies.
+  // https://gist.github.com/blixt/f17b47c62508be59987b
+  seed = seed % 2147483647
+  return () => {
+    seed = seed * 16807 % 2147483647
+    return (seed - 1) / 2147483646
+  }
+}
+
+// Math.random = randomSeedParkMiller()
+
 // create an instance mode object for p5js
 let sketch = function (p5) {
   const MAX_SHIP_VELOCITY = 3.0;
   const MAX_ROTATION_VELOCITY = 0.05;
-
 
   let gameIsRunning = true;
 
@@ -26,6 +36,7 @@ let sketch = function (p5) {
     }
 
   };
+
 
   function reset () {
     for (let i = 0; i <= NUM_ASTEROIDS; i++) {
