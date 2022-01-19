@@ -73,26 +73,22 @@ let sketch = function (p5) {
 
     this.vel = 0;
 
-    this.deg = 0;
+    this.deg = 0;  // ships rotation
+    this.vector = 0;  // ships course
 
-    this.draw = function () {
-      // keyboard logic
-
-      // ship logic
+    this.move = function () {
       if (this.dx > canvasWidth) this.dx = 0;
       if (this.dx < 0) this.dx = canvasWidth;
       if (this.dy > canvasHeight) this.dy = 0;
       if (this.dy < 0) this.dy = canvasHeight;
 
-      // ship movement
-      // this.dx += this.vx;
-      // this.dy += this.vy;
-
       this.dx += this.vel * Math.sin(this.deg)
       this.dy += this.vel * Math.cos(this.deg)
 
-      // ship rendering
+    };
 
+    this.draw = function () {
+      // ship rendering
       // p5.push(this.dx, this.dy);
       p5.translate(this.dx, this.dy);
       p5.rotate(-this.deg);
@@ -102,6 +98,7 @@ let sketch = function (p5) {
       p5.rect(-this.dw/2, -this.dw, this.dw, this.dw * 2);
       // p5.pop();
     };
+
   }
 
   let ship = new Ship();
@@ -136,8 +133,12 @@ let sketch = function (p5) {
 
     if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY
 
+    ship.vel *= 0.99
+    // console.log(ship.vel)
 
-    // draw one ship
+    // move the ship
+    ship.move();
+    // draw the ship
     ship.draw();
   };
 };
