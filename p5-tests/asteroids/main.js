@@ -82,8 +82,8 @@ let sketch = function (p5) {
       if (this.dy > canvasHeight) this.dy = 0;
       if (this.dy < 0) this.dy = canvasHeight;
 
-      this.dx += this.vel * Math.sin(this.deg)
-      this.dy += this.vel * Math.cos(this.deg)
+      this.dx += this.vel * Math.sin(this.vector)
+      this.dy += this.vel * Math.cos(this.vector)
 
     };
 
@@ -129,6 +129,7 @@ let sketch = function (p5) {
 
     if (p5.keyIsDown(p5.UP_ARROW)) {
       ship.vel += 0.1;
+      ship.vector = ship.deg
     }
 
     if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY
