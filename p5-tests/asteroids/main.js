@@ -5,6 +5,8 @@ let y = 100;
 let dx;
 let dy;
 
+let timeoutRef
+
 // let dw = 15;
 
 let canvasWidth = 300;
@@ -40,6 +42,7 @@ let sketch = function (p5) {
   };
 
   function fire() {
+    clearTimeout(timeoutRef)
     bullet.active = true;
     bullet.dx = ship.dx
     bullet.dy = ship.dy
@@ -47,9 +50,9 @@ let sketch = function (p5) {
     bullet.vector = ship.vector
     bullet.deg = ship.deg
 
-    setTimeout(() => {
+    timeoutRef = setTimeout(() => {
       bullet.active = false
-    }, 2000);
+    }, 800);
   }
 
   function reset() {
@@ -128,7 +131,7 @@ let sketch = function (p5) {
 
   // game object definition
 
-  const NUM_ASTEROIDS = 55;
+  const NUM_ASTEROIDS = 15;
   let asteroids = [];
 
   let bullet = new Thing();
@@ -137,7 +140,7 @@ let sketch = function (p5) {
   bullet.dx = 50;
   bullet.dy = 50;
   bullet.dw = 5;
-  bullet.vel = 1;
+  bullet.vel = 3;
   bullet.vector = 0
   bullet.deg = 0
   // bullet.vx = 0;
@@ -149,8 +152,8 @@ let sketch = function (p5) {
     if (this.dy > canvasHeight) this.dy = 0;
     if (this.dy < 0) this.dy = canvasHeight;
 
-    this.dx += this.vel * Math.sin(this.vector);
-    this.dy += this.vel * Math.cos(this.vector);
+    this.dx += this.vel * Math.sin(this.deg);
+    this.dy += this.vel * Math.cos(this.deg);
   };
 
   bullet.draw = function () {
@@ -199,7 +202,7 @@ let sketch = function (p5) {
         if (distance < 12.0) {
           // TODO: change 12
           // console.log("hit by asteroid #", i);
-          // gameIsRunning = false
+          gameIsRunning = false
         }
 
         // collision detection with bullet
@@ -208,7 +211,7 @@ let sketch = function (p5) {
 
         distance = Math.sqrt(dist_x * dist_x + dist_y * dist_y);
 
-        if (distance < 52.0) {
+        if (distance < 12.0) {
           // TODO: change 12
           // console.log("hit by asteroid #", i);
           // gameIsRunning = false
