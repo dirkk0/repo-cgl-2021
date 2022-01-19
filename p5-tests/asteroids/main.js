@@ -15,6 +15,8 @@ let sketch = function (p5) {
   const MAX_SHIP_VELOCITY = 3.0;
   const MAX_ROTATION_VELOCITY = 0.05;
 
+  let gameIsRunning = true;
+
   // p5.mousePressed = function () {
   //   ship.vy += 0.1;
   // };
@@ -107,44 +109,49 @@ let sketch = function (p5) {
 
   // generic draw routine
   p5.draw = function () {
-    p5.background(120);
-    // draw all asteroids
-    for (let i = 0; i <= NUM_ASTEROIDS; i++) {
-      asteroids[i].draw();
+    if (gameIsRunning == false) {
+      p5.background(220);
+    } else {
+      p5.background(120);
+      // draw all asteroids
+      for (let i = 0; i <= NUM_ASTEROIDS; i++) {
+        asteroids[i].draw();
 
-      let dist_x = asteroids[i].dx - ship.dx;
-      let dist_y = asteroids[i].dy - ship.dy;
+        let dist_x = asteroids[i].dx - ship.dx;
+        let dist_y = asteroids[i].dy - ship.dy;
 
-      let distance = Math.sqrt(dist_x * dist_x + dist_y * dist_y);
+        let distance = Math.sqrt(dist_x * dist_x + dist_y * dist_y);
 
-
-      if (distance < 12.0) { // TODO: change 12
-        console.log("hit by asteroid #", i )
+        if (distance < 12.0) {
+          // TODO: change 12
+          console.log("hit by asteroid #", i);
+          gameIsRunning = false
+        }
       }
+
+      if (p5.keyIsDown(p5.LEFT_ARROW)) {
+        ship.deg += MAX_ROTATION_VELOCITY;
+      }
+
+      if (p5.keyIsDown(p5.RIGHT_ARROW)) {
+        ship.deg -= MAX_ROTATION_VELOCITY;
+      }
+
+      if (p5.keyIsDown(p5.UP_ARROW)) {
+        ship.vel += 0.1;
+        ship.vector = ship.deg;
+      }
+
+      if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY;
+
+      ship.vel *= 0.99;
+      // console.log(ship.vel)
+
+      // move the ship
+      ship.move();
+      // draw the ship
+      ship.draw();
     }
-
-    if (p5.keyIsDown(p5.LEFT_ARROW)) {
-      ship.deg += MAX_ROTATION_VELOCITY;
-    }
-
-    if (p5.keyIsDown(p5.RIGHT_ARROW)) {
-      ship.deg -= MAX_ROTATION_VELOCITY;
-    }
-
-    if (p5.keyIsDown(p5.UP_ARROW)) {
-      ship.vel += 0.1;
-      ship.vector = ship.deg;
-    }
-
-    if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY;
-
-    ship.vel *= 0.99;
-    // console.log(ship.vel)
-
-    // move the ship
-    ship.move();
-    // draw the ship
-    ship.draw();
   };
 };
 
