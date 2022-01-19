@@ -17,9 +17,23 @@ let sketch = function (p5) {
 
   let gameIsRunning = true;
 
-  // p5.mousePressed = function () {
-  //   ship.vy += 0.1;
-  // };
+  p5.mousePressed = function () {
+
+    if (gameIsRunning == false ) {
+      reset()
+      gameIsRunning = true  
+    }
+
+  };
+
+  function reset () {
+
+    for (let i = 0; i <= NUM_ASTEROIDS; i++) {
+      asteroids[i] = new Thing();
+    }
+  
+
+  }
 
   // =====Thing start====
   function Thing() {
@@ -54,9 +68,6 @@ let sketch = function (p5) {
   const NUM_ASTEROIDS = 10;
   let asteroids = [];
 
-  for (let i = 0; i <= NUM_ASTEROIDS; i++) {
-    asteroids[i] = new Thing();
-  }
   // ====Thing end=====
 
   // ====Ship start==================
@@ -105,12 +116,19 @@ let sketch = function (p5) {
     p5.createCanvas(canvasWidth, canvasHeight);
     dx = canvasWidth / 2;
     dy = canvasHeight / 2;
+
+    reset()
   };
 
   // generic draw routine
   p5.draw = function () {
     if (gameIsRunning == false) {
+
       p5.background(220);
+      p5.fill(p5.color(0,0,0))
+      p5.textAlign(p5.CENTER, p5.CENTER)
+      p5.text("Oh noes! You lost!", canvasWidth / 2, canvasWidth / 2)
+
     } else {
       p5.background(120);
       // draw all asteroids
