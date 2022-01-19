@@ -10,8 +10,14 @@ let dy;
 let canvasWidth = 300;
 let canvasHeight = 300;
 
+
+
 // create an instance mode object for p5js
 let sketch = function (p5) {
+
+  const MAX_SHIP_VELOCITY = 3.0
+  const MAX_ROTATION_VELOCITY = 0.05
+  
   // p5.mousePressed = function () {
   //   ship.vy += 0.1;
   // };
@@ -49,6 +55,7 @@ let sketch = function (p5) {
   const NUM_ASTEROIDS = 10;
   let asteroids = [];
 
+
   for (let i = 0; i <= NUM_ASTEROIDS; i++) {
     asteroids[i] = new Thing();
   }
@@ -56,8 +63,6 @@ let sketch = function (p5) {
 
   // ====Ship start==================
   function Ship() {
-    this.x = 100;
-    this.y = 100;
     this.dx = canvasWidth / 2;
     this.dy = canvasHeight / 2;
     this.dw = 15;
@@ -84,7 +89,7 @@ let sketch = function (p5) {
       // ship rendering
 
       // p5.push(this.dx, this.dy);
-      p5.translate(this.x, this.y);
+      p5.translate(this.dx, this.dy);
       p5.rotate(this.deg);
 
       p5.stroke(this.col);
@@ -113,12 +118,19 @@ let sketch = function (p5) {
     }
 
     if (p5.keyIsDown(p5.LEFT_ARROW)) {
-      ship.deg += 0.05;
+      ship.deg += MAX_ROTATION_VELOCITY;
     }
 
     if (p5.keyIsDown(p5.RIGHT_ARROW)) {
-      ship.deg -= 0.05;
+      ship.deg -= MAX_ROTATION_VELOCITY;
     }
+
+    if (p5.keyIsDown(p5.UP_ARROW)) {
+      ship.vy += 0.1;
+    }
+
+    if (ship.vy > MAX_SHIP_VELOCITY) ship.vy = MAX_SHIP_VELOCITY
+
 
     // draw one ship
     ship.draw();
