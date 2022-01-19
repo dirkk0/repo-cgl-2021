@@ -6,7 +6,7 @@ let dx;
 let dy;
 
 
-let dw = 15;
+// let dw = 15;
 
 let canvasWidth = 300;
 let canvasHeight = 300;
@@ -47,11 +47,11 @@ let sketch = function (p5) {
     };
   }
 
-  const NUM_THINGS = 10;
-  let things = [];
+  const NUM_ASTEROIDS = 10;
+  let asteroids = [];
 
-  for (let i = 0; i <= NUM_THINGS; i++) {
-    things[i] = new Thing();
+  for (let i = 0; i <= NUM_ASTEROIDS; i++) {
+    asteroids[i] = new Thing();
   }
   // ====Thing end=====
 
@@ -95,11 +95,12 @@ let sketch = function (p5) {
     dy = canvasHeight / 2;
   };
 
+  // generic draw routine
   p5.draw = function () {
     p5.background(120);
     // draw all asteroids
-    for (let i = 0; i <= NUM_THINGS; i++) {
-      things[i].draw();
+    for (let i = 0; i <= NUM_ASTEROIDS; i++) {
+      asteroids[i].draw();
     }
     // draw one ship
     ship.draw()
