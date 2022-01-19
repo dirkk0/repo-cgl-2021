@@ -10,14 +10,11 @@ let dy;
 let canvasWidth = 300;
 let canvasHeight = 300;
 
-
-
 // create an instance mode object for p5js
 let sketch = function (p5) {
+  const MAX_SHIP_VELOCITY = 3.0;
+  const MAX_ROTATION_VELOCITY = 0.05;
 
-  const MAX_SHIP_VELOCITY = 3.0
-  const MAX_ROTATION_VELOCITY = 0.05
-  
   // p5.mousePressed = function () {
   //   ship.vy += 0.1;
   // };
@@ -55,7 +52,6 @@ let sketch = function (p5) {
   const NUM_ASTEROIDS = 10;
   let asteroids = [];
 
-
   for (let i = 0; i <= NUM_ASTEROIDS; i++) {
     asteroids[i] = new Thing();
   }
@@ -73,8 +69,8 @@ let sketch = function (p5) {
 
     this.vel = 0;
 
-    this.deg = 0;  // ships rotation
-    this.vector = 0;  // ships course
+    this.deg = 0; // ships rotation
+    this.vector = 0; // ships course
 
     this.move = function () {
       if (this.dx > canvasWidth) this.dx = 0;
@@ -82,9 +78,8 @@ let sketch = function (p5) {
       if (this.dy > canvasHeight) this.dy = 0;
       if (this.dy < 0) this.dy = canvasHeight;
 
-      this.dx += this.vel * Math.sin(this.vector)
-      this.dy += this.vel * Math.cos(this.vector)
-
+      this.dx += this.vel * Math.sin(this.vector);
+      this.dy += this.vel * Math.cos(this.vector);
     };
 
     this.draw = function () {
@@ -95,10 +90,9 @@ let sketch = function (p5) {
 
       p5.stroke(this.col);
       p5.fill(this.col);
-      p5.rect(-this.dw/2, -this.dw, this.dw, this.dw * 2);
+      p5.rect(-this.dw / 2, -this.dw, this.dw, this.dw * 2);
       // p5.pop();
     };
-
   }
 
   let ship = new Ship();
@@ -117,6 +111,16 @@ let sketch = function (p5) {
     // draw all asteroids
     for (let i = 0; i <= NUM_ASTEROIDS; i++) {
       asteroids[i].draw();
+
+      let dist_x = asteroids[i].dx - ship.dx;
+      let dist_y = asteroids[i].dy - ship.dy;
+
+      let distance = Math.sqrt(dist_x * dist_x + dist_y * dist_y);
+
+
+      if (distance < 12.0) { // TODO: change 12
+        console.log("hit by asteroid #", i )
+      }
     }
 
     if (p5.keyIsDown(p5.LEFT_ARROW)) {
@@ -129,12 +133,12 @@ let sketch = function (p5) {
 
     if (p5.keyIsDown(p5.UP_ARROW)) {
       ship.vel += 0.1;
-      ship.vector = ship.deg
+      ship.vector = ship.deg;
     }
 
-    if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY
+    if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY;
 
-    ship.vel *= 0.99
+    ship.vel *= 0.99;
     // console.log(ship.vel)
 
     // move the ship
