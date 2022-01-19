@@ -15,6 +15,7 @@ let sketch = function (p5) {
   const MAX_SHIP_VELOCITY = 3.0;
   const MAX_ROTATION_VELOCITY = 0.05;
 
+
   let gameIsRunning = true;
 
   p5.mousePressed = function () {
@@ -27,11 +28,15 @@ let sketch = function (p5) {
   };
 
   function reset () {
-
     for (let i = 0; i <= NUM_ASTEROIDS; i++) {
       asteroids[i] = new Thing();
     }
-  
+
+    ship.dx = canvasWidth / 2;
+    ship.dy = canvasHeight / 2;
+    ship.vel = 0;
+    ship.deg = 0; // ships rotation
+    ship.vector = 0; // ships course
 
   }
 
@@ -65,25 +70,15 @@ let sketch = function (p5) {
     };
   }
 
-  const NUM_ASTEROIDS = 10;
-  let asteroids = [];
-
   // ====Thing end=====
 
   // ====Ship start==================
   function Ship() {
-    this.dx = canvasWidth / 2;
-    this.dy = canvasHeight / 2;
+
     this.dw = 15;
     this.col = p5.color(10, 0, 0);
 
-    // this.vx = 0;
-    // this.vy = 0;
 
-    this.vel = 0;
-
-    this.deg = 0; // ships rotation
-    this.vector = 0; // ships course
 
     this.move = function () {
       if (this.dx > canvasWidth) this.dx = 0;
@@ -107,9 +102,12 @@ let sketch = function (p5) {
       // p5.pop();
     };
   }
+  // ====Ship end=====
+
+  const NUM_ASTEROIDS = 15;
+  let asteroids = [];
 
   let ship = new Ship();
-  // ====Ship end=====
 
   p5.setup = function () {
     // frameRate(5);
@@ -123,18 +121,20 @@ let sketch = function (p5) {
   // generic draw routine
   p5.draw = function () {
     if (gameIsRunning == false) {
-
+      // end screen
       p5.background(220);
       p5.fill(p5.color(0,0,0))
       p5.textAlign(p5.CENTER, p5.CENTER)
       p5.text("Oh noes! You lost!", canvasWidth / 2, canvasWidth / 2)
 
     } else {
+      // game screen
       p5.background(120);
       // draw all asteroids
       for (let i = 0; i <= NUM_ASTEROIDS; i++) {
         asteroids[i].draw();
 
+        // collision detection
         let dist_x = asteroids[i].dx - ship.dx;
         let dist_y = asteroids[i].dy - ship.dy;
 
@@ -162,7 +162,7 @@ let sketch = function (p5) {
 
       if (ship.vel > MAX_SHIP_VELOCITY) ship.vel = MAX_SHIP_VELOCITY;
 
-      ship.vel *= 0.99;
+      ship.vel *= 0.95;
       // console.log(ship.vel)
 
       // move the ship
