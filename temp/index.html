@@ -7,7 +7,6 @@
 </head>
 
 <style>
-
   * {
     font-size: xx-large;
   }
@@ -23,9 +22,7 @@
 </style>
 
 <body>
-  <p id="p1">
-    test 789
-  </p>
+
 
   <p>
     test 123
@@ -35,25 +32,33 @@
     test 456
   </p>
 
-  <button onclick="console.log('yay, pressed');">press me</button>
-  <input id="i1" type="number">
-  <input id="i2" type="number">
-
+  <button onclick="doSomething()">press me</button>
+  <input id="i1" type="number" value="3">
+  <input id="i2" type="number" value="7">
+  <p id="p1">
+    test 789
+  </p>
 </body>
 <script>
 
-  let a = 2
-  let b = 9
 
-  let c = a + b
 
-  console.log(c)
-
-  document.querySelector("#p1").innerText = c;
 
   function doSomething() {
 
+    let a = document.querySelector("#i1").value
+    let b = document.querySelector("#i2").value
+
+    a = parseInt(a) // number now
+    b = parseInt(b)
+
+    let c = a + b
+
+    console.log(c)
+      document.querySelector("#p1").innerText = c;
   }
+
+  doSomething()
 
 </script>
 
