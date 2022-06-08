@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Just a test</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+</head>
+
+<style>
+</style>
+
+<body>
+
+</body>
+<script>
+    let capture;
+
+    function setup() {
+        createCanvas(390, 240);
+        capture = createCapture(VIDEO);
+        capture.size(320, 240);
+        //capture.hide();
+    }
+
+    function draw() {
+        background(255);
+        image(capture, 0, 0, 320, 240);
+        filter(INVERT);
+
+</script>
+
+</html>
