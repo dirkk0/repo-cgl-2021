@@ -7,6 +7,10 @@
 </head>
 
 <style>
+
+  * {
+    font-size: xx-large;
+  }
   p {
     color: green;
   }
@@ -17,6 +21,9 @@
 </style>
 
 <body>
+  <p id="p1">
+    test 789
+  </p>
 
   <p>
     test 123
@@ -25,18 +32,17 @@
   <p class="my-paragraph">
     test 456
   </p>
-  <p class="my-paragraph">
-    test 789
-  </p>
 </body>
 <script>
 
   let a = 2
-  let b = 5
+  let b = 9
 
   let c = a + b
 
   console.log(c)
+
+  document.querySelector("#p1").innerText = c
 
 </script>
 
