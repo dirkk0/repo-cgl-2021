@@ -10,13 +10,26 @@
 
 <body>
     <a-scene>
-        <a-entity camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+        <a-entity camera wasd-controls look-controls position="0 1.6 3"></a-entity>
         <a-entity shadow environment="preset: egypt; dressingAmount: 3; seed: 13; shadow:true;"></a-entity>
-        <a-box shadow position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        <a-sphere shadow position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-        <a-cylinder id="c1" shadow position="1 1.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-box shadow position="-1 0.5 0" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <!-- <a-sphere shadow position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere> -->
+        <a-cylinder id="c1" shadow position="-2 2 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
     </a-scene>
 </body>
 
+<script>
+    "use strict";
+    // $ is now the same as 'document.querySelector' (i.e. just shorter to write)
+    const $ = document.querySelector.bind(document);
+
+    // let a = 1
+    // console.log("a is now", a)
+
+    function placeActor(s) {
+        $("#c1").setAttribute("position", s)
+    }
+
+</script>
 
 </html>
