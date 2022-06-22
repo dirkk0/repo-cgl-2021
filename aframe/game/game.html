@@ -2,6 +2,9 @@
 <html>
 
 <head>
+    <style>
+
+    </style>
     <title>video</title>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script
@@ -14,13 +17,14 @@
             <!-- <img id="pingu-img" src="pingu.png"> -->
             <!-- comment this out maybe? -->
             <video id="webcam"></video>
+            <a-asset-item id="house" src="models/scene.gltf"></a-asset-item>
         </a-assets>
 
         <!-- <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image> -->
 
         <a-entity camera wasd-controls="fly: false" look-controls position="0 1.6 3">
             <!-- comment this out maybe? -->
-            <!-- <a-plane position="-0.9 0.6 -1" scale="0.4 0.3 0.3" material="shader: flat; src: #webcam"></a-plane> -->
+            <a-plane position="-0.9 0.6 -1" scale="0.4 0.3 0.3" material="shader: flat; src: #webcam"></a-plane>
             <a-text position="-0.6 0.6 -1" scale="0.5 0.5 0.5" value="test" rotation="0 0 0" material="shader: flat; color: green"></a-text>
 
         </a-entity>
@@ -30,6 +34,7 @@
         <!-- <a-box shadow position="-1 1.2 1" scale="1.25 1 1.25" rotation="0 0 0"  material="src: #webcam"></a-box> -->
 
         <!-- <a-cylinder id="c1" shadow position="-2 2 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
+        <a-entity shadow gltf-model="#house" scale="5 5 5"></a-entity>
     </a-scene>
 </body>
 
