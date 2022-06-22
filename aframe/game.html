@@ -12,13 +12,15 @@
     <a-scene vr-mode-ui="enabled: false">
         <a-assets>
             <!-- <img id="pingu-img" src="pingu.png"> -->
+            <!-- comment this out maybe? -->
             <video id="webcam"></video>
         </a-assets>
 
         <!-- <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image> -->
 
         <a-entity camera wasd-controls="fly: false" look-controls position="0 1.6 3">
-            <a-plane position="-0.9 0.6 -1" scale="0.4 0.3 0.3" rotation="0 0 0" material="shader: flat;src: #webcam"></a-plane>
+            <!-- comment this out maybe? -->
+            <!-- <a-plane position="-0.9 0.6 -1" scale="0.4 0.3 0.3" material="shader: flat; src: #webcam"></a-plane> -->
             <a-text position="-0.6 0.6 -1" scale="0.5 0.5 0.5" value="test" rotation="0 0 0" material="shader: flat; color: green"></a-text>
 
         </a-entity>
@@ -61,6 +63,8 @@
             })
 
     }
+
+    // comment this out maybe?
 
     startVideo()
 
