@@ -11,14 +11,15 @@
 <body>
     <a-scene>
         <a-assets>
-
+            <img id="pingu-img" src="pingu.png">
+            <video id="webcam"></video>
         </a-assets>
 
-        <a-image src="pingu.png" position="-1.25 1.4 -5.7"></a-image>
+        <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image>
 
         <a-entity camera wasd-controls look-controls position="0 1.6 3"></a-entity>
         <a-entity shadow environment="preset: egypt; dressingAmount: 3; seed: 13; shadow:true;"></a-entity>
-        <a-box shadow position="-1 0.5 0" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-box shadow position="-1 0.5 0" rotation="0 45 0" color="#4CC3D9"  material="src: #webcam"></a-box>
         <!-- <a-sphere shadow position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere> -->
         <a-cylinder id="c1" shadow position="-2 2 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
     </a-scene>
@@ -46,14 +47,16 @@
     function startVideo() {
         navigator.mediaDevices.getUserMedia({ audio: false, video: true })
             .then(stream => {
-                let $video = document.querySelector('video')
-                $video.srcObject = stream
-                $video.onloadedmetadata = () => {
-                    $video.play()
+                let v = document.querySelector('video')
+                v.srcObject = stream
+                v.onloadedmetadata = () => {
+                    v.play()
                 }
             })
 
     }
+
+    startVideo()
 
 
 </script>
