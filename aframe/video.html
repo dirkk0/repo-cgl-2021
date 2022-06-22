@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <a-scene>
+    <a-scene >
         <a-assets>
             <img id="pingu-img" src="pingu.png">
             <video id="webcam"></video>
@@ -17,9 +17,11 @@
 
         <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image>
 
-        <a-entity camera wasd-controls look-controls position="0 1.6 3"></a-entity>
-        <a-entity shadow environment="preset: egypt; dressingAmount: 3; seed: 13; shadow:true;"></a-entity>
-        <a-box shadow position="-1 0.5 0" rotation="0 45 0" color="#4CC3D9"  material="src: #webcam"></a-box>
+        <a-entity camera wasd-controls="fly: true" look-controls position="0 1.6 3"></a-entity>
+
+        <a-entity shadow environment="preset: tron; dressingAmount: 3; seed: 13;"></a-entity>
+
+        <a-box shadow position="-1 1.2 1" scale="1.25 1 1.25" rotation="0 0 0"  material="src: #webcam"></a-box>
         <!-- <a-sphere shadow position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere> -->
         <a-cylinder id="c1" shadow position="-2 2 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
     </a-scene>
