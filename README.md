@@ -34,6 +34,7 @@ like so!
 
 ### misc
 
+- cool model, Fantasy City: https://sketchfab.com/3d-models/fantasy-town-0db322fa7a614975b83753a37c4e7350
 - Raph Koster on Game Mechanics https://youtu.be/zyVTxGpEO30?t=733
 - SimonDev Shader Course: https://www.youtube.com/watch?v=cpJ0I_HX8W8
 - Outline Shader https://laboratoriesx86.wordpress.com/2015/11/03/3d-upload-fake-cel-shade-outline-on-sketchfab/
