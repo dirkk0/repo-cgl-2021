@@ -26,28 +26,22 @@
 
         <!-- <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image> -->
 
-        <a-entity id="col-box-yellow" class="triggerable"
-            trigger
-            geometry="primitive: box; width: 3; height: 1; depth: 3;"
-            position="10 0 5"
-            material="shader: flat; color: yellow; opacity: 0.2;"
-            visible="true"
-            >
+        <a-entity id="col-box-yellow" class="triggerable" trigger
+            geometry="primitive: box; width: 3; height: 1; depth: 3;" position="10 0 5"
+            material="shader: flat; color: yellow; opacity: 0.2;" visible="true">
         </a-entity>
 
 
-        <a-entity id="col-box-green" class="triggerable"
-            trigger
-            geometry="primitive: box; width: 3; height: 1; depth: 3;"
-            position="5 0 5"
-            material="shader: flat; color: green; opacity: 0.2;"
-            visible="true"
-            >
+        <a-entity id="col-box-green" class="triggerable" trigger
+            geometry="primitive: box; width: 3; height: 1; depth: 3;" position="5 0 5"
+            material="shader: flat; color: green; opacity: 0.2;" visible="true">
         </a-entity>
 
-        <a-entity id="cam"
-            triggercam
-            camera wasd-controls="fly: false" look-controls position="0 1.6 20">
+        <a-entity id="col-box-red" class="triggerable" trigger geometry="primitive: box; width: 3; height: 1; depth: 3;"
+            position="2 0 17" material="shader: flat; color: red; opacity: 0.2;" visible="true">
+        </a-entity>
+
+        <a-entity id="cam" triggercam camera wasd-controls="fly: false" look-controls position="0 1.6 20">
             <!-- comment this out maybe? -->
             <!-- <a-plane position="-0.9 0.6 -1" scale="0.4 0.3 0.3" material="shader: flat; src: #webcam"></a-plane> -->
             <a-entity id="debug-hud" text="value: test; align: center;" position="-0.6 0.6 -1" scale="1 1 1"
@@ -63,7 +57,7 @@
         <!-- <a-box shadow position="-1 1.2 1" scale="1.25 1 1.25" rotation="0 0 0"  material="src: #webcam"></a-box> -->
 
         <!-- <a-cylinder id="c1" shadow position="-2 2 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
-        <a-entity shadow gltf-model="#house" scale="5 5 5" rotation="0 50 0"></a-entity>
+        <a-entity shadow gltf-model="#house" scale="10 10 10" rotation="0 50 0"></a-entity>
 
         <a-entity light="type: ambient; intensity:0.1;"></a-entity>
 
@@ -118,36 +112,47 @@
         let s = `value: ${pos.x.toFixed(1)}/${pos.z.toFixed(1)}`
         // console.log(pos.x, pos.z)
         $("#debug-hud").setAttribute("text", s)
-
-        // if (pos.x > -10 && pos.z > 0 && pos.x < 0 && pos.z < 10) {
-        //     $("#info-hud").setAttribute("text", "value: You are standing in front of a beautiful yet strange house!")
-        // } else {
-        //     $("#info-hud").setAttribute("text", "value: ")
-        // }
     }, 100);
 
+    function setMessage(msg) {
+        $("#info-hud").setAttribute("text", "value: " + msg)
+        setTimeout(() => {
+            $("#info-hud").setAttribute("text", "value: ")
+        }, 3000);
+    }
 
 
     $("#col-box-yellow").addEventListener("collisionstart", () => {
         console.log("YELLOW in")
-        $("#info-hud").setAttribute("text", "value: You are standing in front of a beautiful yet strange house!")
+        setMessage("You are standing in front of a beautiful yet strange house!")
 
     })
 
-    $("#col-box-yellow").addEventListener("collisionend", () => {
-        console.log("YELLOW out")
-        $("#info-hud").setAttribute("text", "value: ")
-    })
+    // $("#col-box-yellow").addEventListener("collisionend", () => {
+    //     console.log("YELLOW out")
+    //     setMessage("")
+    // })
 
 
     $("#col-box-green").addEventListener("collisionstart", () => {
         console.log("GREEN in")
+        setMessage("You stepped into the green!")
     })
 
     $("#col-box-green").addEventListener("collisionend", () => {
         console.log("GREEN out")
+        setMessage("")
     })
 
+    let hasKey = false
+
+    $("#col-box-red").addEventListener("collisionstart", () => {
+        if (hasKey == true) {
+            setMessage("You WON the game!")
+        } else {
+            setMessage("hmm ...")
+        }
+    })
 </script>
 
 </html>
