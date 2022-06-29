@@ -28,6 +28,7 @@ like so!
 
 ### blender
 
+- WebXR Scene Optimization https://toji.github.io/webxr-scene-optimization/
 - Imphenzia: https://www.youtube.com/c/Imphenzia
 
 
