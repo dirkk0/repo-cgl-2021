@@ -26,10 +26,19 @@
 
         <!-- <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image> -->
 
-        <a-entity id="col-box-1" class="triggerable"
+        <a-entity id="col-box-yellow" class="triggerable"
             trigger
             geometry="primitive: box" position="10 0 5" scale="3 3 3"
-            material="shader: flat; color: yellow"></a-entity>
+            material="shader: flat; color: yellow"
+            >
+        </a-entity>
+
+
+        <a-entity id="col-box-green" class="triggerable"
+            trigger
+            geometry="primitive: box" position="5 0 5" scale="3 3 3"
+            material="shader: flat; color: green">
+        </a-entity>
 
         <a-entity id="cam"
             triggercam
@@ -114,6 +123,22 @@
 
 
 
+    $("#col-box-yellow").addEventListener("collisionstart", () => {
+        console.log("YELLOW in")
+    })
+
+    $("#col-box-yellow").addEventListener("collisionend", () => {
+        console.log("YELLOW out")
+    })
+
+
+    $("#col-box-green").addEventListener("collisionstart", () => {
+        console.log("GREEN in")
+    })
+
+    $("#col-box-green").addEventListener("collisionend", () => {
+        console.log("GREEN out")
+    })
 
 </script>
 

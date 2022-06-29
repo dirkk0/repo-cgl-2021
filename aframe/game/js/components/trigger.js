@@ -5,10 +5,10 @@ AFRAME.registerComponent('trigger', {
     init: function () {
         console.log("trigger component initialized")
         this.collisionstartHandlerFn = function () {
-            console.log("collisionstart!");
+            // console.log("collisionstart!");
         };
         this.collisionendHandlerFn = function () {
-            console.log("collisionend!");
+            // console.log("collisionend!");
         };
         this.el.addEventListener("collisionstart", this.collisionstartHandlerFn);
         this.el.addEventListener("collisionend", this.collisionendHandlerFn);
