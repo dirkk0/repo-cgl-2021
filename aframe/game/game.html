@@ -27,13 +27,15 @@
         <!-- <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image> -->
 
         <a-entity id="col-box-yellow" class="triggerable" trigger
-            geometry="primitive: box; width: 3; height: 1; depth: 3;" position="10 0 5"
+            geometry="primitive: box; width: 5; height: 1; depth: 5;"
+            position="-10 0 7"
             material="shader: flat; color: yellow; opacity: 0.2;" visible="true">
         </a-entity>
 
 
         <a-entity id="col-box-green" class="triggerable" trigger
-            geometry="primitive: box; width: 3; height: 1; depth: 3;" position="5 0 5"
+            geometry="primitive: box; width: 3; height: 1; depth: 3;"
+            position="9 0 8"
             material="shader: flat; color: green; opacity: 0.2;" visible="true">
         </a-entity>
 
@@ -47,7 +49,7 @@
             <a-entity id="debug-hud" text="value: test; align: center;" position="-0.6 0.6 -1" scale="1 1 1"
                 value="value: test; align: center;" rotation="0 0 0" material="shader: flat; color: green"></a-entity>
 
-            <a-entity id="info-hud" text="value: test; align: center;" position="0 -0.6 -1" scale="2 2 2"
+            <a-entity id="info-hud" text="value:; align: center;" position="0 -0.6 -1" scale="2 2 2"
                 value="test; align: center;" rotation="0 0 0" material="shader: flat; color: green"></a-entity>
 
         </a-entity>
@@ -76,6 +78,10 @@
     "use strict";
     // $ is now the same as 'document.querySelector' (i.e. just shorter to write)
     const $ = document.querySelector.bind(document);
+
+    let hasKey = false
+
+    let timeoutId = null
 
     // let a = 1
     // console.log("a is now", a)
@@ -107,6 +113,8 @@
 
     // startVideo()
 
+    setMessage("Welcome to the game!")
+
     setInterval(() => {
         let pos = $("#cam").getAttribute("position")
         let s = `value: ${pos.x.toFixed(1)}/${pos.z.toFixed(1)}`
@@ -116,7 +124,8 @@
 
     function setMessage(msg) {
         $("#info-hud").setAttribute("text", "value: " + msg)
-        setTimeout(() => {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(() => {
             $("#info-hud").setAttribute("text", "value: ")
         }, 3000);
     }
@@ -136,15 +145,16 @@
 
     $("#col-box-green").addEventListener("collisionstart", () => {
         console.log("GREEN in")
-        setMessage("You stepped into the green!")
+        setMessage("You stepped into the green (and got the key)!")
+        hasKey = true
     })
 
-    $("#col-box-green").addEventListener("collisionend", () => {
-        console.log("GREEN out")
-        setMessage("")
-    })
+    // $("#col-box-green").addEventListener("collisionend", () => {
+    //     console.log("GREEN out")
+    //     setMessage("")
+    // })
 
-    let hasKey = false
+
 
     $("#col-box-red").addEventListener("collisionstart", () => {
         if (hasKey == true) {
