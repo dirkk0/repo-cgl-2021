@@ -48,9 +48,9 @@ AFRAME.registerComponent('triggercam', {
         var vec2 = new THREE.Vector3();
         var tpos = this.el.object3D.getWorldPosition(vec2);
 
-        var tx = Math.abs(opos.x - tpos.x) < o.getAttribute('geometry').width /1;
-        var ty = Math.abs(opos.y - tpos.y) < o.getAttribute('geometry').height /1;
-        var tz = Math.abs(opos.z - tpos.z) < o.getAttribute('geometry').depth /1;
+        var tx = Math.abs(opos.x - tpos.x) < o.getAttribute('geometry').width / 2;
+        var ty = Math.abs(opos.y - tpos.y) < o.getAttribute('geometry').height / 2;
+        var tz = Math.abs(opos.z - tpos.z) < o.getAttribute('geometry').depth / 2;
 
         // console.log(this.isColliding, tx, Math.abs(opos.x - tpos.x))
 
