@@ -10,10 +10,10 @@
     <script
         src="https://cdn.jsdelivr.net/npm/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
 
-        <script src="js/components/trigger.js"></script>
+    <script src="js/components/trigger.js"></script>
 
 
-    </head>
+</head>
 
 <body>
     <a-scene vr-mode-ui="enabled: false">
@@ -26,20 +26,21 @@
 
         <!-- <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image> -->
 
-        <a-entity
-        id="col-box-1"
-        class="triggerable" 
-        trigger
-        geometry="primitive: box" position="10 0 5" scale="3 3 3" material="shader: flat; color: yellow"></a-entity>
+        <a-entity id="col-box-1" class="triggerable"
+            trigger
+            geometry="primitive: box" position="10 0 5" scale="3 3 3"
+            material="shader: flat; color: yellow"></a-entity>
 
-        <a-entity id="cam" triggercam camera wasd-controls="fly: false" look-controls position="0 1.6 20">
+        <a-entity id="cam"
+            triggercam
+            camera wasd-controls="fly: false" look-controls position="0 1.6 20">
             <!-- comment this out maybe? -->
             <a-plane position="-0.9 0.6 -1" scale="0.4 0.3 0.3" material="shader: flat; src: #webcam"></a-plane>
-            <a-entity id="debug-hud" text="value: test; align: center;" position="-0.6 0.6 -1" scale="1 1 1" value="value: test; align: center;"
-                rotation="0 0 0" material="shader: flat; color: green"></a-entity>
+            <a-entity id="debug-hud" text="value: test; align: center;" position="-0.6 0.6 -1" scale="1 1 1"
+                value="value: test; align: center;" rotation="0 0 0" material="shader: flat; color: green"></a-entity>
 
-            <a-entity id="info-hud" text="value: test; align: center;" position="0 -0.6 -1" scale="2 2 2" value="test; align: center;" rotation="0 0 0"
-                material="shader: flat; color: green"></a-entity>
+            <a-entity id="info-hud" text="value: test; align: center;" position="0 -0.6 -1" scale="2 2 2"
+                value="test; align: center;" rotation="0 0 0" material="shader: flat; color: green"></a-entity>
 
         </a-entity>
 

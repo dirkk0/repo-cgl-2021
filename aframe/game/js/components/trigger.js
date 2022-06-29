@@ -31,10 +31,6 @@ AFRAME.registerComponent('trigger', {
 
 
 AFRAME.registerComponent('triggercam', {
-    // dependencies: ['raycaster'],
-    // schema: {
-    //     text: { type: 'string', default: 'abc' }
-    // },
     init: function () {
         this.isCollided = false;
         this.isCollidedOld = false;
