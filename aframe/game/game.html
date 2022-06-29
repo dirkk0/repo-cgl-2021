@@ -10,18 +10,20 @@
     <script
         src="https://cdn.jsdelivr.net/npm/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
 
-    <script src="js/components/trigger.js"></script>
+        <script src="js/components/trigger.js"></script>
+        <script src="js/components/simple-navmesh-constraint.js"></script>
 
 
 </head>
 
 <body>
-    <a-scene vr-mode-ui="enabled: false">
+    <a-scene vr-mode-ui="enabled: false" background="color: grey">
         <a-assets>
             <!-- <img id="pingu-img" src="pingu.png"> -->
             <!-- comment this out maybe? -->
             <video id="webcam"></video>
             <a-asset-item id="house" src="models/scene.gltf"></a-asset-item>
+            <a-asset-item id="nav-0-gltf" src="models/nav-0.gltf"></a-asset-item>
         </a-assets>
 
         <!-- <a-image shadow  src="#pingu-img" position="2 1.4 0"></a-image> -->
@@ -43,7 +45,9 @@
             position="2 0 17" material="shader: flat; color: red; opacity: 0.2;" visible="true">
         </a-entity>
 
-        <a-entity id="cam" triggercam camera wasd-controls="fly: false" look-controls position="0 1.6 20">
+        <a-entity id="cam" triggercam
+        simple-navmesh-constraint="navmesh:#nav-0;fall:0.5;height:1.65;"
+        camera wasd-controls="fly: false" look-controls position="0 1.6 20">
             <!-- comment this out maybe? -->
             <!-- <a-plane position="-0.9 0.6 -1" scale="0.4 0.3 0.3" material="shader: flat; src: #webcam"></a-plane> -->
             <a-entity id="debug-hud" text="value: test; align: center;" position="-0.6 0.6 -1" scale="1 1 1"
@@ -54,12 +58,13 @@
 
         </a-entity>
 
-        <a-entity shadow environment="preset: egypt; dressingAmount: 3; seed: 13;"></a-entity>
+        <!-- <a-entity shadow environment="preset: egypt; dressingAmount: 3; seed: 13;"></a-entity> -->
 
         <!-- <a-box shadow position="-1 1.2 1" scale="1.25 1 1.25" rotation="0 0 0"  material="src: #webcam"></a-box> -->
 
         <!-- <a-cylinder id="c1" shadow position="-2 2 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
-        <a-entity shadow gltf-model="#house" scale="10 10 10" rotation="0 50 0"></a-entity>
+        <a-entity id="nav-0" gltf-model="#nav-0-gltf" scale="10 10 10" rotation="0 50 0" position="0 0 0"></a-entity>
+        <!-- <a-entity shadow gltf-model="#house" scale="10 10 10" rotation="0 50 0"></a-entity> -->
 
         <a-entity light="type: ambient; intensity:0.1;"></a-entity>
 
