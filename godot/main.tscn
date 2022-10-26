@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -14,6 +16,7 @@ ambient_light_sky_contribution = 0.23
 
 [node name="Main" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+script = ExtResource( 1 )
 
 [node name="Plane" type="MeshInstance" parent="."]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0 )
@@ -23,7 +26,7 @@ mesh = SubResource( 1 )
 transform = Transform( 0.984356, -0.0755671, 0.15916, 0, 0.903351, 0.428901, -0.176188, -0.422191, 0.88922, 2.0674, 12.1692, 29.5036 )
 
 [node name="Cube" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.229 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
