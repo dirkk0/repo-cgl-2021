@@ -1,22 +1,16 @@
 extends Spatial
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
+# export var increment_on_y_axis = 0.08
+# var inc = incrementon_y_axis
+#export var inc = 0.08
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("hello world")
-	get_node("Cube").translation.y = 8
 	# $Cube
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-func doSomething():
+func _process(delta):
+	# get_node("Cube").translation.y += inc
 	pass
