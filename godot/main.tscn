@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[node name="Main" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.97668, -0.0479238, 0.209282, 0, 0.974769, 0.223214, -0.214699, -0.218009, 0.952038, 0.776048, 1.34613, 3.49423 )
