@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://launchcube.gd" type="Script" id=1]
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://launchcube.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player.gd" type="Script" id=3]
 
 [sub_resource type="PlaneMesh" id=1]
@@ -49,3 +50,6 @@ mesh = SubResource( 6 )
 
 [node name="Camera" type="Camera" parent="Player/Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19663, 0 )
+
+[node name="LaunchCube" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95309, 0, -7.21563 )
