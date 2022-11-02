@@ -2,8 +2,8 @@ extends KinematicBody
 
 var velocity:Vector3
 
-var acceleration = 5
-var speed = 10
+export var acceleration = 5
+export var speed = 10
 var mouse_sensitivity = 0.3
 var gravity = 0.98
 
@@ -33,6 +33,18 @@ func _physics_process(delta):
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 	velocity.y = velocity.y - gravity
 	move_and_slide(velocity)
+	
+
+	if Input.is_action_pressed("ui_e"):
+		var raycast = get_node("Head/Camera/RayCast")
+		var body = raycast.get_collider()
+		if body:
+			# print(body.name)
+			if body.is_in_group("launchgroup"):
+				var cube = body.get_parent().get_parent()
+				if cube.has_method("activate"):
+					cube.activate()
+					#print("I see a body", str(body))
 
 func _input(event):
 	if event is InputEventMouseMotion:
