@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://launchcube.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player.gd" type="Script" id=3]
+[ext_resource path="res://models/basic_scene.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="ConcavePolygonShape" id=8]
+data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
 
 [sub_resource type="ProceduralSky" id=3]
 
@@ -18,6 +22,8 @@ ambient_light_sky_contribution = 0.23
 
 [sub_resource type="CapsuleMesh" id=6]
 
+[sub_resource type="CubeMesh" id=7]
+
 [node name="Main" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
 script = ExtResource( 1 )
@@ -26,6 +32,11 @@ script = ExtResource( 1 )
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0 )
 mesh = SubResource( 1 )
 
+[node name="StaticBody" type="StaticBody" parent="Plane"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Plane/StaticBody"]
+shape = SubResource( 8 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.77552, -0.225195, 0.589793, 0, 0.934218, 0.356703, -0.631323, -0.27663, 0.724505, 19.4008, 9.2632, 22.8737 )
 shadow_enabled = true
@@ -33,19 +44,8 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
 
-[node name="LaunchCube1" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.75911 )
-
-[node name="LaunchCube2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.37149 )
-inc = 0.04
-
-[node name="LaunchCube3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95405, 0, -9.47718 )
-inc = 0.06
-
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.576865, 2.3527, 0.00993645 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7934, 0 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
@@ -60,3 +60,16 @@ mesh = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.810845, 0 )
 
 [node name="Camera" type="Camera" parent="Player/Head"]
+transform = Transform( 0.999991, -0.00429624, 0.000472263, 0.00429623, 0.976111, -0.217232, 0.000472302, 0.217232, 0.97612, 0, 0, -4.47035e-08 )
+
+[node name="Nose" type="MeshInstance" parent="Player"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -1.7165 )
+visible = false
+mesh = SubResource( 7 )
+
+[node name="LaunchCube" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3791, 0, 0 )
+inc = 0.01
+
+[node name="basic_scene" parent="." instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
