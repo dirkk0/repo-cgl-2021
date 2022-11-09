@@ -8,6 +8,8 @@ var mouse_sensitivity = 0.3
 var gravity = 0.98
 export var jump_power = 35.0
 
+var paused = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -17,8 +19,14 @@ func _physics_process(delta):
 	var aim = get_node("Head/Camera").get_camera_transform().basis
 	var direction:Vector3 = Vector3.ZERO
 	if Input.is_action_just_pressed("ui_cancel"):
-		# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_tree().quit()
+		if not paused:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			paused = true
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			paused = false
+		# get_tree().quit()
+
 	if Input.is_action_pressed("ui_w"):
 		direction = -aim.z
 	if Input.is_action_pressed("ui_s"):
@@ -51,8 +59,9 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		var cam = get_node("Head/Camera")
-		self.rotate_y(deg2rad(-event.relative.x * mouse_sensitivity))
-		cam.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity))
-		cam.rotation.x = clamp(cam.rotation.x, -PI*0.3, PI*0.3)
+		if not paused:
+			var cam = get_node("Head/Camera")
+			self.rotate_y(deg2rad(-event.relative.x * mouse_sensitivity))
+			cam.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity))
+			cam.rotation.x = clamp(cam.rotation.x, -PI*0.3, PI*0.3)
 	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://launchcube.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://models/level1/level1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://models/level1/agent.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ProceduralSky" id=3]
 
@@ -25,6 +26,7 @@ shadow_enabled = true
 environment = SubResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66245, 4.49377, 0 )
 
 [node name="LaunchCube" parent="." instance=ExtResource( 2 )]
@@ -32,3 +34,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3791, 0, -2.91119 )
 inc = 0.01
 
 [node name="level1" parent="." instance=ExtResource( 4 )]
+
+[node name="Agent" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.998679, 0, -0.0513774, 0, 1, 0, 0.0513774, 0, -0.998679, -4.41002, 9.18839, -11.3738 )
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = 31.0
+margin_top = 532.0
+margin_right = 292.0
+margin_bottom = 568.0
+text = "This is some test text"
