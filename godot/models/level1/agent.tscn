@@ -43,3 +43,8 @@ cast_to = Vector3( 0, 0, -3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06268, 0 )
 billboard = 1
 modulate = Color( 0.00392157, 0.278431, 0.0352941, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
