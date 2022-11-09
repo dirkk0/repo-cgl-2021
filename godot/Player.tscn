@@ -3,8 +3,12 @@
 [ext_resource path="res://player.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape" id=5]
+radius = 0.5
+height = 0.8
 
 [sub_resource type="CapsuleMesh" id=6]
+radius = 0.5
+mid_height = 0.8
 
 [sub_resource type="CubeMesh" id=7]
 
@@ -21,7 +25,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 mesh = SubResource( 6 )
 
 [node name="Head" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.810845, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 
 [node name="Camera" type="Camera" parent="Head"]
 transform = Transform( 0.999991, -0.00429624, 0.000472263, 0.00429623, 0.976111, -0.217232, 0.000472302, 0.217232, 0.97612, 0, 0, -4.47035e-08 )
@@ -35,3 +39,7 @@ cast_to = Vector3( 0, 0, -5 )
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -1.7165 )
 visible = false
 mesh = SubResource( 7 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.530067, 0.420127, -0.736561, 0, 0.868632, 0.495459, 0.847956, -0.262626, 0.460433, 0, 3.96282, 10.3078 )
+visible = false

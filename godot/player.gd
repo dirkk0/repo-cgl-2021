@@ -6,6 +6,7 @@ export var acceleration = 5
 export var speed = 10
 var mouse_sensitivity = 0.3
 var gravity = 0.98
+export var jump_power = 35.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +28,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_d"):
 		direction = aim.x
 	if Input.is_action_just_pressed("ui_select"):
+		print("you pressed space")
+		velocity.y += 35.0
 		pass
 	
 	direction = direction.normalized()
