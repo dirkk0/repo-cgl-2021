@@ -4,3 +4,16 @@
 
 [node name="Global" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 4.0
+margin_right = 1021.0
+margin_bottom = 595.0
+color = Color( 0.909804, 0.0627451, 0.0627451, 0.301961 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 35.0
+margin_top = 563.0
+margin_right = 277.0
+margin_bottom = 584.0
+text = "Version 1.23 "

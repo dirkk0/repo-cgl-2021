@@ -22,10 +22,10 @@ custom_fonts/font = SubResource( 1 )
 text = "start game"
 
 [node name="ClickButton" type="Button" parent="."]
-margin_left = 164.0
-margin_top = 157.0
-margin_right = 289.0
-margin_bottom = 225.0
+margin_left = 239.0
+margin_top = 269.0
+margin_right = 364.0
+margin_bottom = 337.0
 text = "Click me!"
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
