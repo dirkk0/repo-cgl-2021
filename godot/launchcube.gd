@@ -17,4 +17,5 @@ func _process(delta):
 func activate():
 	if not is_launching:
 		print("i am activated!")
+		Global.found_key = true
 	is_launching = true

@@ -27,6 +27,8 @@ func _physics_process(delta):
 			paused = false
 		# get_tree().quit()
 
+	if Input.is_action_pressed("ui_f"):
+		OS.window_fullscreen = !OS.window_fullscreen
 	if Input.is_action_pressed("ui_w"):
 		direction = -aim.z
 	if Input.is_action_pressed("ui_s"):
@@ -50,9 +52,10 @@ func _physics_process(delta):
 		var raycast = get_node("Head/Camera/RayCast")
 		var body = raycast.get_collider()
 		if body:
-			# print(body.name)
+			print(body.name)
 			if body.is_in_group("launchgroup"):
-				var cube = body.get_parent().get_parent()
+				# var cube = body.get_parent().get_parent()
+				var cube = body.get_parent()
 				if cube.has_method("activate"):
 					cube.activate()
 					#print("I see a body", str(body))

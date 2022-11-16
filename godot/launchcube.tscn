@@ -14,7 +14,8 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 1 )
 
-[node name="CubeStaticBody" type="StaticBody" parent="Cube" groups=["launchgroup"]]
+[node name="CubeStaticBody" type="StaticBody" parent="." groups=["launchgroup"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Cube/CubeStaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="CubeStaticBody"]
 shape = SubResource( 2 )
