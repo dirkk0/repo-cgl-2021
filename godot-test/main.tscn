@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Main" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 421.0
+margin_top = 175.0
+margin_right = 560.0
+margin_bottom = 239.0
+text = "I am a button"
