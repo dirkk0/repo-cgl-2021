@@ -11,3 +11,7 @@ config_version=4
 [application]
 
 run/main_scene="res://start.tscn"
+
+[autoload]
+
+Global="*res://global.tscn"

@@ -12,13 +12,21 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 391.0
-margin_top = 162.0
-margin_right = 667.0
-margin_bottom = 303.0
+margin_left = 662.0
+margin_top = 47.0
+margin_right = 911.0
+margin_bottom = 164.0
 custom_colors/font_color = Color( 0.933333, 0.87451, 0.0627451, 1 )
 custom_colors/font_color_hover = Color( 0.854902, 0.0627451, 0.0627451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "start game"
 
+[node name="ClickButton" type="Button" parent="."]
+margin_left = 164.0
+margin_top = 157.0
+margin_right = 289.0
+margin_bottom = 225.0
+text = "Click me!"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ClickButton" to="." method="_on_ClickButton_pressed"]
